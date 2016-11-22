@@ -7,9 +7,9 @@
     tools:context="com.leibown.practiceprojects.MainActivity">
 
 
-    <com.leibown.practiceprojects.CobwebView
+    <com.leibown.practiceprojects.Bezier
         android:id="@+id/cobweb_view"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_centerInParent="true" />
 </RelativeLayout>
