@@ -5,13 +5,30 @@ import android.os.Bundle;
 
 public class MainActivity extends Activity {
 
-//    private CobwebView cobwebView;
+    //    private CobwebView cobwebView;
 //    private List<CobWebData> cobWebDatas = new ArrayList<>();
+//    private RadioGroup radioGroup;
+//    private Bezier3 bezier3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+//        bezier3 = (Bezier3) findViewById(R.id.bezier3);
+//        radioGroup = (RadioGroup) findViewById(R.id.rg_1);
+//        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(RadioGroup group, int checkedId) {
+//                switch (checkedId) {
+//                    case R.id.rb1:
+//                        bezier3.setMode(true);
+//                        break;
+//                    case R.id.rb2:
+//                        bezier3.setMode(false);
+//                        break;
+//                }
+//            }
+//        });
 //        cobwebView = (CobwebView) findViewById(R.id.cobweb_view);
 //        cobWebDatas.add(new CobWebData("输出", 60));
 //        cobWebDatas.add(new CobWebData("体力", 80));

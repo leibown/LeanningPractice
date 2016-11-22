@@ -11,23 +11,25 @@ import android.view.MotionEvent;
 import android.view.View;
 
 /**
- * 贝塞尔2阶曲线学习
+ * 贝塞尔3阶曲线学习
  *
  * @author leibown
  *         created at 2016/11/22 17:29
  */
 
-public class Bezier extends View {
+public class Bezier3 extends View {
     private Paint mPaint;
     private int centerX, centerY;
 
-    private PointF start, end, control;
+    private PointF start, end, control, control1;
 
-    public Bezier(Context context) {
+    private boolean mode;
+
+    public Bezier3(Context context) {
         this(context, null);
     }
 
-    public Bezier(Context context, AttributeSet attrs) {
+    public Bezier3(Context context, AttributeSet attrs) {
         super(context, attrs);
         mPaint = new Paint();
         mPaint.setColor(Color.BLACK);
@@ -38,6 +40,7 @@ public class Bezier extends View {
         start = new PointF(0, 0);
         end = new PointF(0, 0);
         control = new PointF(0, 0);
+        control1 = new PointF(0, 0);
     }
 
     @Override
@@ -54,6 +57,9 @@ public class Bezier extends View {
 
         control.x = centerX;
         control.y = centerY - 100;
+
+        control1.x = centerX;
+        control1.y = centerY - 100;
     }
 
     @Override
@@ -68,13 +74,16 @@ public class Bezier extends View {
         //绘制辅助线
         mPaint.setStrokeWidth(4);
         canvas.drawLine(start.x, start.y, control.x, control.y, mPaint);
-        canvas.drawLine(end.x, end.y, control.x, control.y, mPaint);
+        canvas.drawLine(control.x, control.y, control1.x, control1.y, mPaint);
+        canvas.drawLine(control1.x, control1.y, end.x, end.y, mPaint);
+
 
         //绘制文字
         Paint.FontMetrics fontMetrics = mPaint.getFontMetrics();
         float fontHeight = fontMetrics.descent - fontMetrics.ascent;
-        float dis = mPaint.measureText("控制点");//文本长度
-        canvas.drawText("控制点", control.x - dis / 2, control.y - fontHeight / 2, mPaint);
+        float dis = mPaint.measureText("控制点1");//文本长度
+        canvas.drawText("控制点1", control.x - dis / 2, control.y - fontHeight / 2, mPaint);
+        canvas.drawText("控制点2", control1.x - dis / 2, control1.y - fontHeight / 2, mPaint);
         canvas.drawText("数据点", start.x - dis, start.y, mPaint);
         canvas.drawText("数据点", end.x, end.y, mPaint);
 
@@ -83,15 +92,24 @@ public class Bezier extends View {
         mPaint.setStrokeWidth(8);
         Path path = new Path();
         path.moveTo(start.x, start.y);
-        path.quadTo(control.x, control.y, end.x, end.y);
+        path.cubicTo(control.x, control.y, control1.x, control1.y, end.x, end.y);
         canvas.drawPath(path, mPaint);
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        control.x = event.getX();
-        control.y = event.getY();
+        if (mode) {
+            control.x = event.getX();
+            control.y = event.getY();
+        }else {
+            control1.x = event.getX();
+            control1.y = event.getY();
+        }
         invalidate();
         return true;
+    }
+
+    public void setMode(boolean isControll1) {
+        mode = isControll1;
     }
 }
