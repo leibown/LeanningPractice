@@ -2,6 +2,8 @@ package com.leibown.practiceprojects;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 
 public class MainActivity extends Activity {
 
@@ -9,6 +11,8 @@ public class MainActivity extends Activity {
 //    private List<CobWebData> cobWebDatas = new ArrayList<>();
 //    private RadioGroup radioGroup;
 //    private Bezier3 bezier3;
+
+//    private PathMeasureView pathView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,5 +45,13 @@ public class MainActivity extends Activity {
 //        cobwebView.setMaxValue(100);
 //        cobwebView.setPolygonCount(3);
 //        cobwebView.setData(cobWebDatas);
+
+//        pathView = (PathMeasureView) findViewById(R.id.pathView);
+
+    }
+
+    public void doClick(View v) {
+        Log.i("leibown","点击了");
+//        pathView.startRotation(300);
     }
 }
