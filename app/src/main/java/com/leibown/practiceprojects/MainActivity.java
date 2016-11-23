@@ -1,6 +1,7 @@
 package com.leibown.practiceprojects;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,6 +14,8 @@ public class MainActivity extends Activity {
 //    private Bezier3 bezier3;
 
 //    private PathMeasureView pathView;
+
+    private SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,11 +50,21 @@ public class MainActivity extends Activity {
 //        cobwebView.setData(cobWebDatas);
 
 //        pathView = (PathMeasureView) findViewById(R.id.pathView);
-
+        searchView = (SearchView) findViewById(R.id.searchView);
+        searchView.setDuration(1500);
+        searchView.setColor(Color.BLACK);
     }
 
     public void doClick(View v) {
         Log.i("leibown","点击了");
 //        pathView.startRotation(300);
+        switch (v.getId()){
+            case R.id.btn1:
+                searchView.startSearch();
+                break;
+            case R.id.btn2:
+                searchView.endSearch();
+                break;
+        }
     }
 }
