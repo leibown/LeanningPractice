@@ -109,6 +109,11 @@ public class Bezier3 extends View {
         return true;
     }
 
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent event) {
+        return super.dispatchTouchEvent(event);
+    }
+
     public void setMode(boolean isControll1) {
         mode = isControll1;
     }
