@@ -1,11 +1,13 @@
 package com.leibown.practiceprojects;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.View;
 
-public class MainActivity extends Activity {
+import com.leibown.practiceprojects.fold.TouchFoldLayout;
+
+public class MainActivity extends FragmentActivity {
 
     //    private CobwebView cobwebView;
 //    private List<CobWebData> cobWebDatas = new ArrayList<>();
@@ -15,6 +17,8 @@ public class MainActivity extends Activity {
 //    private PathMeasureView pathView;
 
 //    private SearchView searchView;
+
+    private TouchFoldLayout mFoldLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,10 +56,13 @@ public class MainActivity extends Activity {
 //        searchView = (SearchView) findViewById(R.id.searchView);
 //        searchView.setDuration(1500);
 //        searchView.setColor(Color.BLACK);
+
+//        mFoldLayout = (TouchFoldLayout) findViewById(R.id.id_fold_layout);
+//        mFoldLayout.setFactor(0.4f);
     }
 
     public void doClick(View v) {
-        Log.i("leibown","点击了");
+        Log.i("leibown", "点击了");
 //        pathView.startRotation(300);
 //        switch (v.getId()){
 //            case R.id.btn1:
